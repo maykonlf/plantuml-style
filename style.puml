@@ -1,0 +1,398 @@
+@startuml
+
+!$PRIMARYFONTCOLOR = "000"
+!$SECONDARY = "333"
+!$ARROWCOLOR = "666666"
+!$ARROWFONTCOLOR = "333"
+!$BORDERCOLOR = "aaa"
+!$BOXBG = "ccc"
+!$LIGHTBORDERCOLOR = "cccccc"
+!$LIGHTBG = "e0e0e0"
+skinparam backgroundColor fff
+
+!$C4_SYSTEM_BACKGROUND_COLOR = "0C4497"
+!$C4_SYSTEM_BORDER_COLOR = "093371"
+!$C4_CONTAINER_BACKGROUND_COLOR = "1A81DB"
+!$C4_CONTAINER_BORDER_COLOR = "0A6FC2"
+!$C4_COMPONENT_BACKGROUND_COLOR = "90caf9"
+!$C4_COMPONENT_BORDER_COLOR = "64B5F7"
+
+!$C4_EXT_SYSTEM_BACKGROUND_COLOR = "292929"
+!$C4_EXT_SYSTEM_BORDER_COLOR = "0A0A0A"
+!$C4_EXT_CONTAINER_BACKGROUND_COLOR = "666666"
+!$C4_EXT_CONTAINER_BORDER_COLOR = "474747"
+!$C4_EXT_COMPONENT_BACKGROUND_COLOR = "C2C2C2"
+!$C4_EXT_COMPONENT_BORDER_COLOR = "A3A3A3"
+
+!if (%not(%variable_exists("$FONTNAME")))
+!$FONTNAME = "SansSerif"
+!endif
+
+!if (%not(%variable_exists("$FONTSIZE")))
+!$FONTSIZE = 12
+!endif
+
+!ifdef DARKBLUE
+skinparam backgroundColor 777
+!$ACCENT = "1a66c2"
+!$ACCENTDARK = "002642"
+skinparam stereotypeCBackgroundColor $ACCENT
+!define DARKSTYLE
+!endif
+
+!ifdef LIGHTBLUE
+!$ACCENT = "2a86e2"
+!$ACCENTDARK = "1a66c2"
+skinparam stereotypeCBackgroundColor $ACCENTDARK
+!define LIGHTSTYLE
+!endif
+
+!ifdef DARKRED
+!$ACCENT = "880000"
+!$ACCENTDARK = "330000"
+skinparam stereotypeCBackgroundColor $ACCENT
+!define DARKSTYLE
+!endif
+
+!ifdef LIGHTRED
+!$ACCENT = "CC0033"
+!$ACCENTDARK = "AA0033"
+skinparam stereotypeCBackgroundColor $ACCENTDARK
+!define LIGHTSTYLE
+!endif
+
+!ifdef DARKGREEN
+!$ACCENT = "228811"
+!$ACCENTDARK = "113300"
+skinparam stereotypeCBackgroundColor $ACCENT
+!define DARKSTYLE
+!endif
+
+!ifdef LIGHTGREEN
+!$ACCENT = "55BB33"
+!$ACCENTDARK = "338822"
+skinparam stereotypeCBackgroundColor $ACCENTDARK
+!define LIGHTSTYLE
+!endif
+
+!ifdef DARKORANGE
+!$ACCENT = "BB6600"
+!$ACCENTDARK = "662200"
+skinparam stereotypeCBackgroundColor $ACCENT
+!define DARKSTYLE
+!endif
+
+!ifdef LIGHTORANGE
+!$ACCENT = "FF8800"
+!$ACCENTDARK = "BB6600"
+skinparam stereotypeCBackgroundColor $ACCENT
+!define LIGHTSTYLE
+!endif
+
+!ifdef LIGHTSTYLE
+!$PRIMARYFONTCOLOR = "000"
+!$SECONDARY = "333"
+!$ARROWCOLOR = "666666"
+!$ARROWFONTCOLOR = "333"
+!$BORDERCOLOR = "aaa"
+!$BOXBG = "ccc"
+!$LIGHTBORDERCOLOR = "cccccc"
+!$LIGHTBG = "e0e0e0"
+skinparam backgroundColor fff
+!endif
+
+!ifdef DARKSTYLE
+!$PRIMARYFONTCOLOR = "fff"
+!$SECONDARY = "aaa"
+!$ARROWCOLOR = "fff"
+!$ARROWFONTCOLOR = "bbb"
+!$BORDERCOLOR = "1b1b1b"
+!$BOXBG = "2e2e2e"
+!$LIGHTBORDERCOLOR = "767676"
+!$LIGHTBG = "575757"
+skinparam backgroundColor 777
+!endif
+
+!procedure font_style()
+  fontColor $PRIMARYFONTCOLOR
+  fontName $FONTNAME
+  fontSize $FONTSIZE
+  stereotypeFontColor $SECONDARY
+  stereotypeFontSize $FONTSIZE
+!endprocedure
+
+!procedure basic_style()
+  backgroundColor $BOXBG
+  borderColor $BORDERCOLOR
+!endprocedure
+
+!procedure light_style()
+  backgroundColor $LIGHTBG
+  borderColor $LIGHTBORDERCOLOR
+!endprocedure
+
+!procedure accent_style()
+  backgroundColor $ACCENT
+  borderColor $ACCENTDARK
+!endprocedure
+
+!procedure arrow_style()
+  arrowColor $ARROWCOLOR
+  arrowFontName $FONTNAME
+  arrowFontColor $ARROWFONTCOLOR
+  arrowFontSize $FONTSIZE
+!endprocedure
+
+' Class diagrams
+
+skinparam circledCharacter {
+  radius 8
+  fontSize $FONTSIZE
+  fontName $FONTNAME
+}
+
+skinparam class {
+  basic_style()
+  font_style()
+  arrow_style()
+
+  attributeFontColor $SECONDARY
+  attributeFontSize $FONTSIZE
+  attributeIconSize $FONTSIZE
+}
+
+' Sequence diagrams
+
+skinparam actor {
+  accent_style()
+  font_style()
+}
+
+skinparam participant {
+  basic_style()
+  font_style()
+}
+
+skinparam collections {
+  basic_style()
+  font_style()
+}
+
+skinparam SequenceBox{
+  light_style()
+  font_style()
+}
+
+' Component diagrams
+
+skinparam interface {
+  accent_style()
+  font_style()
+}
+
+skinparam component {
+  basic_style()
+  font_style()
+}
+
+skinparam node {
+  basic_style()
+  font_style()
+}
+
+skinparam database {
+  basic_style()
+  font_style()
+}
+
+skinparam database<<system>> {
+    backgroundcolor $C4_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_SYSTEM_BORDER_COLOR
+}
+
+skinparam database<<external_system>> {
+    backgroundcolor $C4_EXT_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_EXT_SYSTEM_BORDER_COLOR
+}
+
+skinparam database<<container>> {
+    backgroundcolor $C4_CONTAINER_BACKGROUND_COLOR
+    bordercolor $C4_CONTAINER_BORDER_COLOR
+}
+
+skinparam database<<external_container>> {
+    backgroundcolor $C4_EXT_CONTAINER_BACKGROUND_COLOR
+    bordercolor $C4_EXT_CONTAINER_BORDER_COLOR
+}
+
+skinparam database<<component>> {
+    backgroundcolor $C4_COMPONENT_BACKGROUND_COLOR
+    bordercolor $C4_COMPONENT_BORDER_COLOR
+}
+
+skinparam database<<external_component>> {
+    backgroundcolor $C4_EXT_COMPONENT_BACKGROUND_COLOR
+    bordercolor $C4_EXT_COMPONENT_BORDER_COLOR
+}
+
+skinparam queue {
+  basic_style()
+  font_style()
+}
+
+skinparam queue<<system>> {
+    backgroundcolor $C4_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_SYSTEM_BORDER_COLOR
+}
+
+skinparam queue<<external_system>> {
+    backgroundcolor $C4_EXT_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_EXT_SYSTEM_BORDER_COLOR
+}
+
+skinparam queue<<container>> {
+    backgroundcolor $C4_CONTAINER_BACKGROUND_COLOR
+    bordercolor $C4_CONTAINER_BORDER_COLOR
+}
+
+skinparam queue<<external_container>> {
+    backgroundcolor $C4_EXT_CONTAINER_BACKGROUND_COLOR
+    bordercolor $C4_EXT_CONTAINER_BORDER_COLOR
+}
+
+skinparam queue<<component>> {
+    backgroundcolor $C4_COMPONENT_BACKGROUND_COLOR
+    bordercolor $C4_COMPONENT_BORDER_COLOR
+}
+
+skinparam queue<<external_component>> {
+    backgroundcolor $C4_EXT_COMPONENT_BACKGROUND_COLOR
+    bordercolor $C4_EXT_COMPONENT_BORDER_COLOR
+}
+
+' Use Case diagrams
+
+skinparam usecase {
+  basic_style()
+  font_style()
+  arrow_style()
+}
+
+skinparam activity {
+  basic_style()
+  font_style()
+  arrow_style()
+}
+
+skinparam sequence {
+  font_style()
+  arrow_style()
+
+  lifeLineBorderColor $ACCENT
+  lifeLineBackgroundColor $LIGHTBG
+}
+
+skinparam boundary {
+  accent_style()
+  font_style()
+}
+
+skinparam control {
+  accent_style()
+  font_style()
+}
+
+skinparam entity {
+  accent_style()
+  font_style()
+}
+
+' State diagrams
+
+skinparam state {
+  basic_style()
+  font_style()
+  arrow_style()
+  startColor $ACCENT
+  endColor $ACCENTDARK
+}
+
+' Object diagrams
+
+skinparam object {
+  basic_style()
+  font_style()
+  arrow_style()
+}
+
+' Common
+
+skinparam note {
+  accent_style()
+  font_style()
+}
+
+skinparam cloud {
+  basic_style()
+  font_style()
+  arrow_style()
+}
+
+skinparam rectangle {
+  basic_style()
+  font_style()
+  RoundCorner 12
+}
+
+skinparam rectangle<<person>> {
+    backgroundcolor $C4_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_SYSTEM_BORDER_COLOR
+}
+
+skinparam rectangle<<external_person>> {
+    backgroundcolor $C4_EXT_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_EXT_SYSTEM_BORDER_COLOR
+}
+
+skinparam rectangle<<system>> {
+    backgroundcolor $C4_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_SYSTEM_BORDER_COLOR
+}
+
+skinparam rectangle<<external_system>> {
+    backgroundcolor $C4_EXT_SYSTEM_BACKGROUND_COLOR
+    bordercolor $C4_EXT_SYSTEM_BORDER_COLOR
+}
+
+skinparam rectangle<<container>> {
+    backgroundcolor $C4_CONTAINER_BACKGROUND_COLOR
+    bordercolor $C4_CONTAINER_BORDER_COLOR
+}
+
+skinparam rectangle<<external_container>> {
+    backgroundcolor $C4_EXT_CONTAINER_BACKGROUND_COLOR
+    bordercolor $C4_EXT_CONTAINER_BORDER_COLOR
+}
+
+skinparam rectangle<<component>> {
+    backgroundcolor $C4_COMPONENT_BACKGROUND_COLOR
+    bordercolor $C4_COMPONENT_BORDER_COLOR
+}
+
+skinparam rectangle<<external_component>> {
+    backgroundcolor $C4_EXT_COMPONENT_BACKGROUND_COLOR
+    bordercolor $C4_EXT_COMPONENT_BORDER_COLOR
+}
+
+skinparam storage {
+  basic_style()
+  font_style()
+}
+
+skinparam arrow {
+    Color $ARROWCOLOR
+    FontColor $ARROWCOLOR
+    FontSize 12
+}
+
+@enduml
