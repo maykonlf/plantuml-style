@@ -397,4 +397,6 @@ skinparam arrow {
     FontSize 12
 }
 
+SHOW_PERSON_OUTLINE()
+
 @enduml
