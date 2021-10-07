@@ -1,0 +1,52 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include https://raw.githubusercontent.com/maykonlf/plantuml-style/main/style.puml
+' !include style.puml
+
+Person(Person, "Person")
+Person_Ext(Person_Ext, "Person_Ext")
+
+System(System, "System")
+SystemDb(SystemDb, "SystemDb")
+SystemQueue(SystemQueue, "SystemQueue")
+Rel(Person, System, "label")
+Rel(System, SystemDb, "label", "technology")
+Rel(System, SystemQueue, "label", "technology")
+
+System_Ext(System_Ext, "System_Ext")
+SystemDb_Ext(SystemDb_Ext, "SystemDb_Ext")
+SystemQueue_Ext(SystemQueue_Ext, "SystemQueue_Ext")
+Rel(Person_Ext, System_Ext, "label")
+Rel(System_Ext, SystemDb_Ext, "label", "technology")
+Rel(System_Ext, SystemQueue_Ext, "label", "technology")
+
+Container(Container, "Container", "technology")
+ContainerDb(ContainerDb, "ContainerDb", "technology")
+ContainerQueue(ContainerQueue, "ContainerQueue", "technology")
+Rel(Person, Container, "label")
+Rel(Container, ContainerDb, "label", "technology")
+Rel(Container, ContainerQueue, "label", "technology")
+
+Container_Ext(Container_Ext, "Container_Ext", "technology")
+ContainerDb_Ext(ContainerDb_Ext, "ContainerDb_Ext", "technology")
+ContainerQueue_Ext(ContainerQueue_Ext, "ContainerQueue_Ext", "technology")
+Rel(Person_Ext, Container_Ext, "label")
+Rel(Container_Ext, ContainerDb_Ext, "label", "technology")
+Rel(Container_Ext, ContainerQueue_Ext, "label", "technology")
+
+Component(Component, "Component", "technology")
+ComponentDb(ComponentDb, "ComponentDb", "ComponentDb")
+ComponentQueue(ComponentQueue, "ComponentQueue", "technology")
+Rel(Person, Component, "label")
+Rel(Component, ComponentDb, "label", "technology")
+Rel(Component, ComponentQueue, "label", "technology")
+
+Component_Ext(Component_Ext, "Component_Ext", "technology")
+ComponentDb_Ext(ComponentDb_Ext, "ComponentDb_Ext", "technology")
+ComponentQueue_Ext(ComponentQueue_Ext, "ComponentQueue_Ext", "technology")
+Rel(Person_Ext, Component_Ext, "label")
+Rel(Component_Ext, ComponentDb_Ext, "label", "technology")
+Rel(Component_Ext, ComponentQueue_Ext, "label", "technology")
+
+@enduml
