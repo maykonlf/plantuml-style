@@ -1,7 +1,7 @@
 @startuml
-' !define LIGHTBLUE
-' !include https://raw.githubusercontent.com/maykonlf/plantuml-style/main/style.puml
-!include style.puml
+!define DARKBLUE
+!include https://raw.githubusercontent.com/maykonlf/plantuml-style/main/style.puml
+' !include style.puml
 
 
 class Object << general >>
