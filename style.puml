@@ -1,5 +1,6 @@
 @startuml
 
+' Set default style as LIGHTBLUE
 !$PRIMARYFONTCOLOR = "000"
 !$SECONDARY = "333"
 !$ARROWCOLOR = "666666"
@@ -8,7 +9,10 @@
 !$BOXBG = "ccc"
 !$LIGHTBORDERCOLOR = "cccccc"
 !$LIGHTBG = "e0e0e0"
-skinparam backgroundColor fff
+!$ACCENT = "2a86e2"
+!$ACCENTDARK = "1a66c2"
+skinparam stereotypeCBackgroundColor $ACCENTDARK
+!define LIGHTSTYLE
 
 !$C4_SYSTEM_BACKGROUND_COLOR = "0C4497"
 !$C4_SYSTEM_BORDER_COLOR = "093371"
